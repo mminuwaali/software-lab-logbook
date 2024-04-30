@@ -1,0 +1,32 @@
+ public void sendCertApplicationMail() throws IOException, Exception {
+        System.out.println("Im sending to: " + emailAddress);
+
+        Email from = new Email("cloudsoftconsultingltd@gmail.com");
+        String subject = "AHLUS-SUFFAH COLLEGE OF EDUCATION (ASCOE) - Online Application Signup (Confirmation Email)";
+        Email toRecipient = new Email(emailAddress);
+        Content content = new Content("text/html", " <br/> <div style=\"background: lightgray\" >" + "<h5>" + "<br/> Dear  " + surname + " " + othername + ", " + "<br/>" + "<br/> Thank you for your application.  <br/> Copy the generated information below to log (Applicant Login) into your dashboard and continue with your application; "
+                + "<br/> <br/>  " + " <strong> " + "Session: " + session + "<br />" + "Course_choice: " + the_Retrieved_course_choice + "<br/>" + " Application Number: " + the_ApplicationNumber + " <br/> Password: " + the_Retrieved_Generatedpassword + "<strong/>" + " <br/> " + "<br/> " + "Thank you." + " <br/> " + "<strong>" + "Signed:" + "<br/> " + "  Online Application System, <br /> Ahlussuffah College of Education (ACOE), <br/> Kaduna Nigeria. " + "</strong>" + "</h5>" + "</div>");
+        Mail mail = new Mail(from, subject, toRecipient, content);
+
+        SendGrid sg = new SendGrid(APIKeyClass.apiKey);
+
+        Request request = new Request();
+
+        System.out.println("Testing before sending the mail");
+
+        try {
+            request.setMethod(Method.POST);
+            request.setEndpoint("mail/send");
+            request.setBody(mail.build());
+            Response response = sg.api(request);
+            System.out.println(response.getStatusCode());
+            System.out.println(response.getBody());
+            System.out.println(response.getHeaders());
+
+            //Clear Variables 
+            clearVariables();//invoked 
+        } catch (Exception e) {
+            throw e;
+        }
+
+    }//end of the sendMail method    

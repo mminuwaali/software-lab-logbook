@@ -1,0 +1,41 @@
+{% load static heroicons tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% tailwind_css %}
+    <meta charset="UTF-8" />
+    <title>Record Management System | Student</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body class="w-screen h-screen flex overflow-hidden p-8 pl-2 from-blue-600 to-purple-700 bg-gradient-to-br">
+    <aside class="w-28 h-full flex flex-col items-center py-6 gap-10">
+      <a href="{% url 'student:index-view' %}" style="font-variant: small-caps;" class="text-xs hover:text-black hover:bg-white w-full p-2 rounded-l-full font-black"><span class="font-black italic text-blue-400 font-serif text-lg" style="font-variant: normal;">L</span>log</a>
+      <nav class="grow flex flex-col gap-3 text-sm whitespace-nowrap" style="font-variant: small-caps;">
+        <a href="{% url 'student:create-view' %}" class="uppercase text-red-200 text-sm font-black hover:text-black hover:bg-white w-full p-2 rounded-l-full">new log</a>
+      </nav>
+      <a href="{% url 'account:logout-view' %}" class="uppercase text-red-200 text-sm font-black hover:text-black hover:bg-white w-full p-2 rounded-l-full">exit</a>
+    </aside>
+    <main class="grow overflow-auto overflow-x-hidden rounded-xl bg-white">
+      {% block body %}
+
+      {% endblock %}
+    </main>
+
+    {% if messages %}
+      <section class="inset-0 fixed top-0 p-6 left-0 z-50 w-full h-full pointer-events-none flex flex-col items-start justify-end gap-2">
+        {% for msg in messages %}
+          <div class="w-96 p-2 bg-gray-300 shadow-md text-xs pop-up-messages pointer-events-auto cursor-pointer">
+            <span class="leading-3">{{ msg }}</span>
+          </div>
+        {% endfor %}
+      </section>
+    {% endif %}
+  </body>
+  <script>
+    querySelectorAll('.pop-up-messages').forEach((message, id) => {
+      message.onclick = message.remove
+      setTimeout(message && message.remove, 2000 + 500 * id)
+    })
+  </script>
+</html>

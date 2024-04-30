@@ -1,0 +1,42 @@
+{% extends 'staff.html' %}
+
+{% block body %}
+  <section class="w-full flex flex-wrap gap-6 content-center">
+    <div class="grow p-8 overflow-auto rounded shadow-md bg-white aspect-2 flex flex-col items-start gap-4">
+      <h2 class="text-2xl font-semibold text-slate-800 capitalize">title: <span class="text-slate-600 font-thin">{{ record.title }}</span></h2>
+
+      <div class="grow basis-96 max-w-screen-sm flex flex-wrap flex-col gap-2">
+        <span class="capitalize text-xl font-semibold text-slate-800">description:</span>
+        <p class="text-sm">{{ record.description }}</p>
+        <br>
+        <a class="text-slate-500" href="{% url 'student:download-file' record.id %}">Download File</a>
+      </div>
+
+      <div class="w-full flex items-center justify-between">
+        <div class="w-full flex flex-col items-start justify-center text-xs mt-auto">
+          <span>Score: {{ record.score|default:"--" }}</span>
+          <span>Remark: {{ record.remark|default:"" }}</span>
+        </div>
+        <div class="w-full flex flex-col items-end justify-center text-xs font-semibold mt-auto">
+            <span>Date: {{ record.created_at|date:'d M, Y' }}</span>
+            <span>Time: {{ record.created_at|date:'h:i A' }}</span>
+          </div>
+      </div>
+    </div>
+
+    <div class="basis-96 p-4 bg-white rounded shadow-md flex items-center justify-center">
+      <form method="post" class="w-full flex flex-col items-start gap-8">
+        {% csrf_token %}
+        <div class="w-full flex flex-col">
+          <h2 class="text-2xl font-bold">Remark</h2>
+          <span class="italic font-thin text-slate-600">Give a remark for this student's record</span>
+        </div>
+        <div class="w-full flex flex-col gap-2">
+          <input required name="score" type="number" min="1" class="w-full rounded-md px-4 py-1 border-slate-400" placeholder="score" />
+          <textarea name="remark" class="w-full rounded-md px-4 py-1 border-slate-400 resize-none h-20" placeholder="remark"></textarea>
+        </div>
+        <button class="w-full py-2 text-center font-bold bg-blue-700 text-white rounded uppercase">grade</button>
+      </form>
+    </div>
+  </section>
+{% endblock %}

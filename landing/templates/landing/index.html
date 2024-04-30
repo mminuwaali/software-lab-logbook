@@ -1,0 +1,12 @@
+{% extends 'landing.html' %}
+{% load static %}
+
+{% block body %}
+  <section class="w-full flex relative h-screen">
+    <img src="{% static 'images/banner.jpg' %}" alt="" class="absolute w-full h-full object-cover" />
+    <div class="w-full h-full flex flex-col items-center justify-center bg-black bg-opacity-80 bg-blend-overlay z-10 text-white">
+      <h1 class="text-[clamp(3rem,4.5vw,6rem)] font-bold text-center capitalize">Welcome to our lab</h1>
+      <span class="text-center relative before:absolute before:mr-2 before:right-full before:w-20 before:h-1 before:bg-white before:top-1/2 / after:absolute after:left-full after:w-20 after:h-1 after:bg-white after:top-1/2 after:ml-2" style="font-variant: small-caps;">set your records online</span>
+    </div>
+  </section>
+{% endblock %}

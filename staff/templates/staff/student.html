@@ -1,0 +1,28 @@
+{% extends 'staff.html' %}
+
+{% block body %}
+  <section class="w-full flex flex-wrap gap-6">
+    <div class="basis-96 p-4 bg-white rounded shadow-md">
+      <h2 class="text-semibold italic capitalize text-sm">{{student.username}} | {{student.last_name|title}}</h2>
+    </div>
+    <div class="grow p-4 rounded shadow-md bg-white"></div>
+  </section>
+
+  <section class="w-full rounded-md shadow-md bg-white p-4 grid grid-cols-[repeat(auto-fill,minmax(18rem,1fr))]">
+    {% for record in records %}
+      <a href="{% url 'staff:detail' record.id %}" class="basis-96 flex-none p-4 flex flex-col items-start gap-2 shadow-md snap-start aspect-[2.5] bg-white bg-opacity-60 backdrop-blur-md rounded">
+        <h2 class="text-semibold italic capitalize text-sm">{{ record.title }}</h2>
+        <p class="text-xs test-slate-700 line-clamp-5">{{ record.description }}</p>
+
+        <div class="mt-auto flex items-center justify-between gap-2 w-full">
+          <div class="w-8 aspect-1 flex-none rounded-full bg-black"></div>
+          <span class="text-xs text-slate-600 lowercase" style="font-variant: small-caps;">{{ record.user.username }}</span>
+          <div class="ml-auto flex flex-col items-end text-xs text-gray-700">
+            <span>Date: {{ record.created_at|date:'d M, Y' }}</span>
+            <span>Time: {{ record.created_at|date:'h:i A' }}</span>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </section>
+{% endblock %}

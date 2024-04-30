@@ -1,0 +1,26 @@
+{% load static heroicons tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% tailwind_css %}
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body class="w-screen h-screen flex bg-slate-100">
+    <aside class="flex-none h-full w-14 bg-white py-20 flex flex-col items-center justify-between gap-4">
+      <a href="" class=""></a>
+      <nav class="grow flex flex-col items-center justify-start gap-2 w-full"></nav>
+      <a href="" class=""></a>
+    </aside>
+    <main class="h-screen w-full overflow-x-hidden overflow-y-auto grow flex flex-col bg-gradient-to-t from-transparent from-70% to-blue-200 to-30%">
+      <header class="w-full flex flex-none h-10"></header>
+      <div class="grow max-h-full p-8 flex flex-col gap-4 w-full">
+        {% block body %}
+
+        {% endblock %}
+      </div>
+    </main>
+  </body>
+</html>

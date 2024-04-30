@@ -1,0 +1,46 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% tailwind_css %}
+    <meta charset="UTF-8" />
+    <title>Authentication</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body class="w-screen h-screen flex gap-10 p-10">
+    <aside class="basis-80 grow rounded-lg from-blue-600 to-blue-900 bg-gradient-to-br md:flex flex-col gap-2 items-start text-white flex p-6 justify-center">
+      <h3 class="font-bold text-center text-5xl w-5/6">Important Notes to students</h3>
+      <br>
+      <p class="text-2xl">The purpose of this logbook is for the students to record his/her activities/tasks undertaken during practical classes in the laboratory.</p>
+      <p class="text-2xl">Students must complete relevant entry of the logbook at the end of every practical class before leaving the laboratory.</p>
+      <p class="text-2xl">Logbook must be endosed by staff.</p>
+    </aside>
+    <main class="basis-80 h-full p-2 flex flex-col items-center justify-between gap-16 bg-white rounded-md grow">
+      <div class="w-full flex items-center justify-between">
+        <a href="{% url 'landing:index-view' %}" style="font-variant: small-caps;" class="text-xs font-black"><span class="font-black italic text-blue-400 font-serif text-lg" style="font-variant: normal;">L</span>log</a>
+      </div>
+      {% block body %}
+
+      {% endblock %}
+    </main>
+    <section id="error-container" class="w-screen h-screen flex items-center justify-start flex-col p-10 gap-2 fixed top-0 left-0 z-50 pointer-events-none">
+      {% for message in messages %}
+        <span class="pointer-events-auto cursor-pointer p-4 bg-white w-96 max-w-5/6 text-red-500 font-serif text-xs rounded bg-opacity-90 backdrop-blur-md font-thin leading-4 opacity-0 -mt-10 transition-all">{{ message }}</span>
+      {% endfor %}
+    </section>
+  </body>
+  <script>
+    const container = document.querySelector('#error-container')
+    
+    container.querySelectorAll('*').forEach((node, index, nodes) => {
+      setTimeout(() => {
+        let delay
+        node.style.opacity = '1'
+        node.style.marginTop = '0'
+    
+        delay = setTimeout(() => node?.remove(), 3000 + 500 * index)
+        node.addEventListener('click', () => node.remove())
+      }, 2000 + 500 * index)
+    })
+  </script>
+</html>
