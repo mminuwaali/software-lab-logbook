@@ -21,10 +21,7 @@ def create_view(request):
     if request.method == "POST":
         form = forms.RecordForm(request.POST, request.FILES)  # Include request.FILES to handle file uploads
         if form.is_valid():
-            instance = form.save(commit=False)  # Don't save the form yet
-
-            instance.user = request.user
-            instance.save()
+            form.save()  # Don't save the form yet
 
             messages.success(request, "Log Added Successfully!")
             return redirect("student:index-view")

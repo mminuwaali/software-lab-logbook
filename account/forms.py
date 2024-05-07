@@ -9,6 +9,7 @@ class RegisterForm(forms.UserCreationForm):
         model = User
         fields = [
             "email",
+            "level",
             "username",
             "password1",
             "password2",

@@ -4,6 +4,7 @@
   <section class="w-full h-full flex items-center justify-center">
     <form method="post" enctype="multipart/form-data" class="w-4/6 h-4/6 rounded-md shadow-xl bg-slate-50 p-4 flex flex-col px-[8%]">
       {% csrf_token %}
+      <input type="hidden" name="user" value="{{ user.id }}">
       <h2 class="text-center mb-6 text-3xl font-semibold">Activity log</h2>
       <input type="text" name="title" class="w-full p-2 px-4 rounded-md border-slate-300" placeholder="Enter the record title" />
       <textarea name="description" class="resize-none h-full w-full p-2 px-4 rounded-md border-slate-300 mt-3" placeholder="Write some discoveries..."></textarea>

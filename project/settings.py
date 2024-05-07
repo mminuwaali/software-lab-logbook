@@ -32,6 +32,14 @@ TAILWIND_APP_NAME = "theme"
 
 AUTH_USER_MODEL = "account.user"
 
+LOGIN_URL = 'account:login-view'
+
+LOGOUT_URL = 'account:logout-view'
+
+LOGIN_REDIRECT_URL = 'account:login-view'
+
+LOGOUT_REDIRECT_URL = 'account:logout-view'
+
 NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd" if os_name == "nt" else "/usr/bin/npm"
 
 # Application definition

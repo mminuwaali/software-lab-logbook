@@ -1,4 +1,5 @@
 from . import forms
+from blog.models import Level
 from django.contrib import auth, messages
 from django.contrib.auth.models import Group
 from django.shortcuts import render, redirect
@@ -38,9 +39,11 @@ def register_view(request):
             request.session['form_data'] = None
             return redirect("account:login-view")
 
-        print(form.errors)
         request.session['form_data'] = form.data
-        (messages.error(request, i) for i in form.errors.values())
+        [messages.error(request, i[0]) for i in form.errors.values()]
         return redirect("account:register-view")
     
-    return render(request, "account/register.html")
+    levels = Level.objects.all()
+
+    context = {"levels":levels}
+    return render(request, "account/register.html", context)

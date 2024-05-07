@@ -5,12 +5,12 @@
   <head>
     {% tailwind_css %}
     <meta charset="UTF-8" />
-    <title>Record Management System | Student</title>
+    <title>Lab Logbook | Student</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body class="w-screen h-screen flex overflow-hidden p-8 pl-2 from-blue-600 to-purple-700 bg-gradient-to-br">
     <aside class="w-28 h-full flex flex-col items-center py-6 gap-10">
-      <a href="{% url 'student:index-view' %}" style="font-variant: small-caps;" class="text-xs hover:text-black hover:bg-white w-full p-2 rounded-l-full font-black"><span class="font-black italic text-blue-400 font-serif text-lg" style="font-variant: normal;">L</span>log</a>
+      <a href="{% url 'student:index-view' %}" style="font-variant: small-caps;" class="text-xl hover:text-black hover:bg-white w-full p-2 rounded-l-full font-black"><span class="font-black italic text-blue-400 font-serif text-3xl" style="font-variant: normal;">L</span>logbook</a>
       <nav class="grow flex flex-col gap-3 text-sm whitespace-nowrap" style="font-variant: small-caps;">
         <a href="{% url 'student:create-view' %}" class="uppercase text-red-200 text-sm font-black hover:text-black hover:bg-white w-full p-2 rounded-l-full">new log</a>
       </nav>

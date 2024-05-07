@@ -6,7 +6,7 @@ from django.contrib import admin
 class RecordAdmin(admin.ModelAdmin):
     list_display = ["title", "user", "created_at", "updated_at"]
     list_filter = ["user"]
-    search_fields = ["title"]
+    search_fields = ["title", "user__username__icontains"]
 
 
 @admin.register(models.Notification)

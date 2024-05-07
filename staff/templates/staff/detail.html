@@ -32,8 +32,8 @@
           <span class="italic font-thin text-slate-600">Give a remark for this student's record</span>
         </div>
         <div class="w-full flex flex-col gap-2">
-          <input required name="score" type="number" min="1" class="w-full rounded-md px-4 py-1 border-slate-400" placeholder="score" />
-          <textarea name="remark" class="w-full rounded-md px-4 py-1 border-slate-400 resize-none h-20" placeholder="remark"></textarea>
+          <input required name="score" type="number" value="{{record.score}}" min="1" class="w-full rounded-md px-4 py-1 border-slate-400" placeholder="score" />
+          <textarea name="remark" class="w-full rounded-md px-4 py-1 border-slate-400 resize-none h-20" placeholder="remark">{{record.remark}}</textarea>
         </div>
         <button class="w-full py-2 text-center font-bold bg-blue-700 text-white rounded uppercase">grade</button>
       </form>

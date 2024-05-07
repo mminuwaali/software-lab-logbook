@@ -10,7 +10,7 @@
   </head>
   <body class="w-screen min-h-screen flex flex-col items-center overflow-x-hidden">
     <header class="text-white px-[10%] w-full p-2 flex items-center gap-10 fixed left-0 top-0 z-50 bg-black bg-opacity-60 shadow-md backdrop-blur-md">
-      <a href="#" style="font-variant: small-caps;" class="text-xs font-black"><span class="font-black italic text-blue-400 font-serif text-lg" style="font-variant: normal;">L</span>log</a>
+      <a href="{% url 'landing:index-view' %}" style="font-variant: small-caps;" class="font-black text-xl"><span class="font-black italic text-blue-400 font-serif text-4xl" style="font-variant: normal;">L</span>Logbook</a>
 
       <nav class="grow flex items-center justify-end gap-4 text-xs font-semibold" style="font-variant: small-caps;">
         <a href="{% url 'landing:about-view' %}" class="text-center">about us</a>
