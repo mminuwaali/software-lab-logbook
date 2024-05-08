@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+from shutil import which
 from pathlib import Path
 from os import name as os_name
 
@@ -40,7 +41,7 @@ LOGIN_REDIRECT_URL = 'account:login-view'
 
 LOGOUT_REDIRECT_URL = 'account:logout-view'
 
-NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd" if os_name == "nt" else "/usr/bin/npm"
+NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd" if os_name == "nt" else which('npm')
 
 # Application definition
 
